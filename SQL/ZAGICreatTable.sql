@@ -103,3 +103,59 @@ INSERT INTO includes VALUES ('2X2','T444',2);
 INSERT INTO includes VALUES ('4X4','T555',4);
 INSERT INTO includes VALUES ('5X5','T555',2);
 INSERT INTO includes VALUES ('6X6','T555',1);
+
+
+USE ZAGIDB;
+
+
+SELECT productid, productname, vendorid, productprice
+FROM product
+WHERE productprice <= 110 AND
+              CATEGORYID = ‘FW’
+ORDER BY productprice DESC;
+
+SELECT productid, productname, vendorid, productprice
+FROM product
+WHERE productprice <= 110 AND
+              categoryid = ‘FW’
+ORDER BY categoryid, productprice;
+
+SELECT productid, productname, categoryid, vendorid, productprice
+FROM product
+ORDER BY categoryid, productprice;
+
+AGGREGATE Functions
+
+SELECT count(*)
+FROM product;
+
+SELECT AVG(productprice)
+FROM product;
+
+Select count(distinct vendorid)
+From product;
+
+Retrieve the number of products, average product price, lowest product price, and highest product price in the CP product category:
+
+select count(*), avg(productprice), min(Productprice), max(productprice)
+from product
+where categoryid = 'CP';
+
+
+
+
+
+
+To Specify Decimal Places:
+
+Use ROUND:
+
+select count(*), round(avg(productprice), 2), min(Productprice), max(productprice)
+from product
+where categoryid = 'CP';
+
+or use TRUNC:
+
+select count(*), trunc(avg(productprice), 2), min(Productprice), max(productprice)
+from product
+where categoryid = 'CP';
